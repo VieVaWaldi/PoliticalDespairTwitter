@@ -1,7 +1,6 @@
 # Political Despair Twitter
 
 ## Get data
-wallteeeeer, im bored
 
 Library to get more from the API, more tweets and with a larger time line -> Optimized-Modified-GetOldTweets3-OMGOT
 
@@ -20,6 +19,11 @@ What can be in a tweet:
 Techniques:
 - all lower case
 - Stemming to retain only the stem of a word (eating -> eat)
+  
+Take the old file, make a new file. 1 line should contain: date, time, text, hashtags, @annotations. The text has to be made into lower capital, without links or emoticons, and all words must be utf recognized
+  
+Input: tweets from the data scrapper
+Output: Date, Time, Text, Hashtags, @annotations in CSV format
 
 ### New Format
 
