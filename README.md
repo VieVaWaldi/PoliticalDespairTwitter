@@ -1,7 +1,7 @@
 # Political Despair Twitter
 
 ## Get data
-wallteeeeer
+wallteeeeer, im bored
 
 Library to get more from the API, more tweets and with a larger time line -> Optimized-Modified-GetOldTweets3-OMGOT
 
