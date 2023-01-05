@@ -23,6 +23,7 @@ Techniques:
 Take the old file, make a new file. 1 line should contain: date, time, text, hashtags, @annotations. The text has to be made into lower capital, without links or emoticons, and all words must be utf recognized
   
 Input: tweets from the data scrapper
+  
 Output: Date, Time, Text, Hashtags, @annotations in CSV format
 
 ### New Format
