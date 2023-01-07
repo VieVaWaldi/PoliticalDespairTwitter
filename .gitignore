@@ -250,3 +250,7 @@ Thumbs.db
 #Extra: CSV files #
 ###################
 *.csv
+
+#The Tweeter data folder#
+#########################
+sanitize_data/data
