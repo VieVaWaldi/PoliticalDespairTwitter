@@ -4,6 +4,7 @@
 ### CUSTOM ###
 
 /data
+/data_sanitized
 
 ### macOS ###
 # General
