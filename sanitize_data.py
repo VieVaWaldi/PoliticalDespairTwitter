@@ -1,3 +1,4 @@
+import advertools as adv
 import nltk
 from nltk.corpus import stopwords
 from cleantext import clean
@@ -6,10 +7,7 @@ import re
 import os
 
 nltk.download("stopwords")
-stop_words = set(stopwords.words("english"))
-
-# regexWebURLPattern = re.compile(
-#     """https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)""")
+STOP_WORDS = set(stopwords.words("english"))
 
 
 def sorted_alphanumeric(data):
@@ -35,25 +33,24 @@ def ASCIIFilter(tweet):
     return ASCIITweet
 
 
-def is_url(word):
-    if word.find("http://") == 0 or word.find("https://") == 0:
-        return True
-
-
 def is_sonderfall(word):
     if word == "&amp;":
+        return True
+    # Remove URL
+    if word.find("http://") == 0 or word.find("https://") == 0:
         return True
     return False
 
 
 def tweetDecomposer(tweet):
 
-    # Remove bas last line
+    # Stop on last line
     if tweet.find("No more data. finished scraping!!") == 0:
         return
 
-    # Remove emojis
-    clean(tweet, no_emoji=True)
+    # Save, then remove emojis
+    # emojis = adv.extract_emoji(tweet)
+    tweet = clean(tweet, no_emoji=True)
 
     # Seperate by word and stop on too few lines
     tweet = tweet.lower()
@@ -63,11 +60,9 @@ def tweetDecomposer(tweet):
 
     # remove tweet ID
     tweetWords = tweetWords[1:]
-
     date = tweetWords[0]
     time = tweetWords[1]
     timezone = tweetWords[2]
-
     # remove time/timezone and tweet username
     tweetWords = tweetWords[4:]
 
@@ -77,30 +72,29 @@ def tweetDecomposer(tweet):
 
     # removing stopwords
     tweetWords = " ".join([word for word in tweetWords
-                           if word not in stop_words]).split()
+                           if word not in STOP_WORDS]).split()
 
     for tweetWord in tweetWords:
 
-        # Remove All Emojis
-        # clean(tweetWord, no_emoji=True)
-        if len(tweetWord) == 0:
-            continue
-
-        # Remove URL
-        if is_url(tweetWord):
-            continue
-
-        if is_sonderfall(word):
+        if is_sonderfall(tweetWord):
             continue
 
         # Annotations
-        elif tweetWord[0] == "@":
+        if tweetWord[0] == "@":
             mentions.append(tweetWord[1:])
         # Hashtags
-        elif tweetWord[0] == "#":
+        if tweetWord[0] == "#":
             hashtags.append(tweetWord[1:])
-        else:
-            text += tweetWord + " "
+
+        # remove special characters
+        tweetWord = re.sub('[^A-Za-z0-9 ]+', '', tweetWord)
+
+        if len(tweetWord) == 0:
+            continue
+
+        text += tweetWord + " "
+    if len(text) == 0:
+        return None
     return date, time, text, mentions, hashtags
 
 
@@ -121,14 +115,16 @@ def save_sanitized_file(user_file, path, sanitized_tweets):
 
     with open(f".{path}{new_name}", 'w', newline='') as file:
 
-        writer = csv.writer(file)
+        writer = csv.writer(file, delimiter=";")
         writer.writerow(["Date", "Time", "Text", "Mentions", "Hashtags"])
 
         for san_tweet in sanitized_tweets:
             if san_tweet == None:
                 continue
+            hashtags = ', '.join(san_tweet[3])
+            annotations = ', '.join(san_tweet[4])
             writer.writerow([san_tweet[0], san_tweet[1],
-                            san_tweet[2], san_tweet[3], san_tweet[4]])
+                            san_tweet[2], hashtags, annotations])
 
 
 directory = '/data/'
