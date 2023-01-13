@@ -1,5 +1,12 @@
 # Political Despair Twitter
 
+## presentation
+
+- monday
+- 20 minutes, 5 min for each plus questions
+- more is worse than less
+- LIBRARY JOHANNES
+
 ## Get data
 
 Library to get more from the API, more tweets and with a larger time line -> Optimized-Modified-GetOldTweets3-OMGOT
@@ -20,11 +27,16 @@ Techniques:
 - all lower case
 - Stemming to retain only the stem of a word (eating -> eat)
   
+ToDo:
+- user and party in line
+- remove hashtags and annotations from tweettext
 
 ### New Format
 
 File with UserName and Party
 -> DATE, TIME, TWEET, #HASHTAGS (seperate), @mentions 
+
+
 
 ## Spark
 
@@ -34,13 +46,19 @@ File with UserName and Party
 - Mentions per user
 - Hashtags per User
 - Tweet Length comparison
-- Most used words by user and by party -> Easy visualization using word clouds
+- Most used words by user and by party -> Easy visualization using word clouds !
+
 
 ### More complicated analysis:
 
 - sentiment analysis using TextBlob with 2 measure for each tweet: polarity (-1 negative sentiment, 1 positive sentiment) and subjectivity (0 is factual statment, 1 is personal opinion). Compare these by user and or parties.
 - The same thing over time
 - Sentiment filtered out for specific keywords (eg if a tweet uses a country like germany, or a company or other users)
+
+- tweet france -> parties sentiment towards specific countries of companies
+
+- specific timeframe for tweet analysis -> eg bumps in sentiment towards special dates like election etc
+
 
 ## Command Line Arguments Optimized-Modified-GetOldTweets3-OMGOT
 
