@@ -34,9 +34,3 @@ rdd = text_file.map(lambda x: get_columns(x)[2]).flatMap(
 sorted = sort_Tuple(rdd)
 for i in range(len(sorted)-50, len(sorted)):
     print(sorted[i])
-
-# counts = text_file.map(lambda x: get_columns(x)[2]).map(lambda line: line.split(" ")).map(
-#     lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
-
-# for (word, count) in counts:
-#     print("%s: %i" % (word, count))
