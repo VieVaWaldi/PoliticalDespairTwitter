@@ -1,13 +1,16 @@
 # Political Despair Twitter
 
-## presentation
+## Presentation
 
-- monday
-- 20 minutes, 5 min for each plus questions
-- more is worse than less
-- LIBRARY JOHANNES
+- [ ] WIP
 
-## Get data
+- Monday
+- 5 min for each plus questions
+- More is worse than less
+
+## Get data 
+
+- [ ] Still missing about 20%
 
 Library to get more from the API, more tweets and with a larger time line -> Optimized-Modified-GetOldTweets3-OMGOT
 
@@ -16,31 +19,29 @@ ID YYY-MM-DD HH:MM:SS +TZTZ <USERNAME> TWEET
 
 ### Sanitize
 
+- [x] Done
+
 What can be in a tweet:
 - text (punctuations, white space)
 - url http:// or https://
 - emoticon
 - #hashtag
 - @user
-
-Techniques:
 - all lower case
-- Stemming to retain only the stem of a word (eating -> eat)
-  
-ToDo:
+- remove all stop words with nltk
 - user and party in line
 - remove hashtags and annotations from tweettext
 
-### New Format
+**New Format**
 
 File with UserName and Party
 -> DATE, TIME, TWEET, #HASHTAGS (seperate), @mentions 
 
-
-
 ## Spark
 
-### Easy Questions (with easy visualization):
+#### Easy Questions (with easy visualization):
+
+- [ ] Word Count for all Reps vs all Dems
 
 - How many tweets per user
 - Mentions per user
@@ -59,17 +60,3 @@ File with UserName and Party
 
 - specific timeframe for tweet analysis -> eg bumps in sentiment towards special dates like election etc
 
-
-## Command Line Arguments Optimized-Modified-GetOldTweets3-OMGOT
-
-This package was optimized to work efficiently and seamlessly on both Windows Command prompt (CMD), and on UNIX Terminal. Below are some command line arguments which is by no means exhaustive. run `python cli.py --help` in terminal to get the full argument options.
-
-  - username (**str**): An optional specific username from a twitter account. Without "@".
-  - since (**str. "yyyy-mm-dd"**): A lower bound date to restrict search.
-  - until **(str. "yyyy-mm-dd"**): An upper bound date to restrist search.
-  - search (**str**): A query text to be matched.
-  - near(**str**): A reference location area from where tweets were generated
-  - csv: Write as a .csv file
-  - json: Write as a .json file
-  - count: Display the number of tweets scraped at the end of the session
-  - year: Filter a tweet before a specified year

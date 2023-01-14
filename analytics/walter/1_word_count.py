@@ -27,8 +27,7 @@ def sort_Tuple(tup):
 # Wordcount
 text_file = sc.textFile("data_sanitized/AdamKinzinger_R")
 
-# .map(lambda word: (word, 1))
-rdd = text_file.map(lambda x: get_columns(x)[2]).flatMap(
+rdd = text_file.map(lambda x: get_columns(x)[4]).flatMap(
     lambda line: line.split(" ")).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
 
 sorted = sort_Tuple(rdd)

@@ -82,9 +82,11 @@ def tweetDecomposer(tweet):
         # Annotations
         if tweetWord[0] == "@":
             mentions.append(tweetWord[1:])
+            continue
         # Hashtags
         if tweetWord[0] == "#":
             hashtags.append(tweetWord[1:])
+            continue
 
         # remove special characters
         tweetWord = re.sub('[^A-Za-z0-9 ]+', '', tweetWord)
@@ -104,26 +106,28 @@ def get_new_user_name(user_file):
         for line in file:
             entries = line.split(',')
             if entries[2] == user_file:
-                new_name = f"{entries[0]}{entries[1]}_{entries[4]}"
+                new_name = f"{entries[0]}_{entries[1]}"
                 new_name = new_name.strip("\n")
-                return new_name
+                party = f"{entries[4]}".strip('\n')
+                party = "Democrat" if party == "D" else "Republican"
+                return new_name, party
 
 
 def save_sanitized_file(user_file, path, sanitized_tweets):
 
-    new_name = get_new_user_name(user_file)
+    new_name, party = get_new_user_name(user_file)
 
-    with open(f".{path}{new_name}", 'w', newline='') as file:
+    with open(f".{path}{new_name}.csv", 'w', newline='') as file:
 
         writer = csv.writer(file, delimiter=";")
-        writer.writerow(["Date", "Time", "Text", "Mentions", "Hashtags"])
+        writer.writerow(["User", "Party", "Date", "Time", "Text", "Mentions", "Hashtags"])
 
         for san_tweet in sanitized_tweets:
             if san_tweet == None:
                 continue
             hashtags = ', '.join(san_tweet[3])
             annotations = ', '.join(san_tweet[4])
-            writer.writerow([san_tweet[0], san_tweet[1],
+            writer.writerow([new_name, party, san_tweet[0], san_tweet[1],
                             san_tweet[2], hashtags, annotations])
 
 
