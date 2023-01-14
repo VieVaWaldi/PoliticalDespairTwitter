@@ -46,8 +46,8 @@ File with UserName and Party
 - [ ] Tweet Length comparison per user
 
 - [x] Word count per user -> Word cloud visualization
-- [ ] Word count per party
-- [ ] This in a time frame (since ukraine war, ...)
+- [x] Word count per party
+- [x] This in a time frame (since ukraine war, ...)
 
 - [ ] Most used annotations sorted by party
 - [ ] This in a time frame (...)
