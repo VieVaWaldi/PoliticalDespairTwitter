@@ -2,7 +2,7 @@
 
 from pyspark import SparkContext, SparkConf
 
-confCluster = SparkConf().setAppName("WordCount")
+confCluster = SparkConf().setAppName("TweetsPerUser")
 sc = SparkContext(conf=confCluster)
 
 
@@ -24,12 +24,13 @@ def sort_Tuple(tup):
     return tup
 
 
-# Wordcount
-text_file = sc.textFile("data_sanitized/AdamKinzinger_R")
+text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
 
-rdd = text_file.map(lambda x: get_columns(x)[4]).flatMap(
-    lambda line: line.split(" ")).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
+rdd = text_file.map(lambda x: get_columns(x)[0]).map(
+    lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
 
 sorted = sort_Tuple(rdd)
-for i in range(len(sorted)-50, len(sorted)):
-    print(sorted[i])
+cnt = 0
+for user, tweets in sorted:
+    cnt += 1 
+    print(cnt, user, tweets)

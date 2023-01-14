@@ -41,13 +41,18 @@ File with UserName and Party
 
 #### Easy Questions (with easy visualization):
 
-- [ ] Word Count for all Reps vs all Dems
+- [x] How many tweets per user
 
-- How many tweets per user
-- Mentions per user
-- Hashtags per User
-- Tweet Length comparison
-- Most used words by user and by party -> Easy visualization using word clouds !
+- [ ] Tweet Length comparison per user
+
+- [ ] Most used words sorted by party -> Word cloud visualization
+- [ ] This in a time frame (since ukraine war, ...)
+
+- [ ] Most used annotations sorted by party -> Word cloud visualization
+- [ ] This in a time frame (...)
+
+- [ ] Most used hashtags sorted by party -> Word cloud visualization
+- [ ] This in a time frame (...)
 
 
 ### More complicated analysis:
