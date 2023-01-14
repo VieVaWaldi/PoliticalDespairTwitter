@@ -32,5 +32,5 @@ rdd = text_file.map(lambda x: get_columns(x)[0]).map(
 sorted = sort_Tuple(rdd)
 cnt = 0
 for user, tweets in sorted:
-    cnt += 1 
+    cnt += 1
     print(cnt, user, tweets)
