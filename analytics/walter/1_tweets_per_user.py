@@ -1,6 +1,7 @@
 # export SPARK_LOCAL_IP="127.0.0.1"
 
 from pyspark import SparkContext, SparkConf
+import csv
 
 confCluster = SparkConf().setAppName("TweetsPerUser")
 sc = SparkContext(conf=confCluster)
@@ -31,6 +32,17 @@ rdd = text_file.map(lambda x: get_columns(x)[0]).map(
 
 sorted = sort_Tuple(rdd)
 cnt = 0
+#Small hack to make the users and tweets into iterables
+tweets_numbers = []
+users = []
 for user, tweets in sorted:
     cnt += 1
     print(cnt, user, tweets)
+    users.append(user)
+    tweets_numbers.append(tweets)
+
+# Write into CSV the result    
+with open('tweet_per_user.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(["username", "tweet count"])
+    writer.writerows([users, tweets_numbers])
