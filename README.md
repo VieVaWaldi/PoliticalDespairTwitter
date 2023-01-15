@@ -60,12 +60,15 @@ File with UserName and Party
 
 ### More complicated analysis:
 
+Sentiment analysis using TextBlob with 2 measure for each tweet: polarity (-1 negative sentiment, 1 positive sentiment) and subjectivity (0 is factual statment, 1 is personal opinion).
 
-- sentiment analysis using TextBlob with 2 measure for each tweet: polarity (-1 negative sentiment, 1 positive sentiment) and subjectivity (0 is factual statment, 1 is personal opinion). Compare these by user and or parties.
-- The same thing over time
-- Sentiment filtered out for specific keywords (eg if a tweet uses a country like germany, or a company or other users)
+- [ ] Sentiment Analysis (user, party, date, polarity, subjectivity): for each tweet
 
-- tweet france -> parties sentiment towards specific countries of companies
+- [ ] with filter for time
 
-- specific timeframe for tweet analysis -> eg bumps in sentiment towards special dates like election etc
+- [ ] with filter for category 
+- [ ] sentiment only for all countries
+- [ ] sentiment only for specific country like germany
+- [ ] sentiment only for companies or specific company
 
+- ? specific timeframe for tweet analysis -> eg bumps in sentiment towards special dates like election etc
