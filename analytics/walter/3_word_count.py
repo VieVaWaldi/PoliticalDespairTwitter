@@ -50,12 +50,21 @@ def word_count_per_party():
         lambda user_text: name_and_word(user_text[0], user_text[1].split(' '))
     ).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
 
+    # open the CSV file and write the headers
+    with open('data_preprocessed/3_word_count_per_party.csv', 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["party", "word", "wordcount"])
+        f.close()
+
     # Output ((a=party, b=word) c=wordcount)
     # This is sorted by party and by wordcount
     for i in rdd:
         ((a, b), c) = i
-        # if int(c) > 10000:
         print(a, b, c)
+        with open('data_preprocessed/3_word_count_per_party.csv', 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([a, b, c])
+            f.close()
 
 
 def date_greater_than(d1, d2='2022-03-01'):
@@ -104,5 +113,5 @@ def word_count_per_party_after_date(date_after):
 
 
 # word_count_per_user()
-# word_count_per_party()
-word_count_per_party_after_date('2022-03-01')
+word_count_per_party()
+# word_count_per_party_after_date('2022-03-01')
