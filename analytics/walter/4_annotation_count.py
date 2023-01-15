@@ -93,6 +93,6 @@ def annotation_count_per_party_after_date(date_after):
 
 
 # Annotations are other users mentioned in a tweet
-annotation_count_per_user()
+# annotation_count_per_user()
 # annotation_count_per_party()
-# annotation_count_per_party_after_date('2022-03-01')
+annotation_count_per_party_after_date('2022-03-01')

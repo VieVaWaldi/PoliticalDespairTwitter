@@ -1,7 +1,6 @@
 # export SPARK_LOCAL_IP="127.0.0.1"
 
 from pyspark import SparkContext, SparkConf
-import operator
 
 confCluster = SparkConf().setAppName("TweetLengthPerUser")
 sc = SparkContext(conf=confCluster).getOrCreate()
@@ -43,7 +42,7 @@ def analysis_tweet_length_per_user():
 
         ((a1, b1), c1) = rdd_tweet_length[i]
         ((a2, b2), c2) = rdd_tweet_count[i]
-        
+
         print(a1, b1, c1/c2)
 
         name = a1
