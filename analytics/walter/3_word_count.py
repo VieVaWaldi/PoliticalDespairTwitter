@@ -31,11 +31,21 @@ def word_count_per_user():
         lambda user_text: name_and_word(user_text[0], user_text[1].split(' '))
     ).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
 
+    # open the CSV file and write the headers
+    with open('data_preprocessed/3_word_count_per_user.csv', 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["name lastname", "word", "wordcount"])
+        f.close()
+
     # Output ((a=name_lastname, b=word) c=wordcount)
     # This is sorted by user and by wordcount
     for i in rdd:
         ((a, b), c) = i
         print(a, b, c)
+        with open('data_preprocessed/3_word_count_per_user.csv', 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([a, b, c])
+            f.close()
 
 
 def word_count_per_party():
@@ -112,6 +122,6 @@ def word_count_per_party_after_date(date_after):
                 f.close()
 
 
-# word_count_per_user()
-word_count_per_party()
+word_count_per_user()
+# word_count_per_party()
 # word_count_per_party_after_date('2022-03-01')
