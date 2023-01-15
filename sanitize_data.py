@@ -81,11 +81,19 @@ def tweetDecomposer(tweet):
 
         # Annotations
         if tweetWord[0] == "@":
-            mentions.append(tweetWord[1:])
+            if tweetWord[1:] == " ":
+                continue
+            annotation = tweetWord[1:].strip()
+            annotation = annotation.strip('.')
+            mentions.append(annotation)
             continue
         # Hashtags
         if tweetWord[0] == "#":
-            hashtags.append(tweetWord[1:])
+            if tweetWord[1:] == " ":
+                continue
+            hashtag = tweetWord[1:].strip()
+            hashtag = hashtag.strip('.')
+            hashtags.append(hashtag)
             continue
 
         # remove special characters
@@ -97,7 +105,7 @@ def tweetDecomposer(tweet):
         text += tweetWord + " "
     if len(text) == 0:
         return None
-    return date, time, text, mentions, hashtags
+    return date, time, text, hashtags, mentions
 
 
 def get_new_user_name(user_file):
@@ -132,8 +140,8 @@ def save_sanitized_file(user_file, path, sanitized_tweets):
         for san_tweet in sanitized_tweets:
             if san_tweet == None:
                 continue
-            hashtags = ', '.join(san_tweet[3])
-            annotations = ', '.join(san_tweet[4])
+            hashtags = ','.join(san_tweet[3])
+            annotations = ','.join(san_tweet[4])
             writer.writerow([new_name, party, san_tweet[0], san_tweet[1],
                             san_tweet[2], hashtags, annotations])
 

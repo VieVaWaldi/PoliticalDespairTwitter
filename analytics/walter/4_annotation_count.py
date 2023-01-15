@@ -23,15 +23,15 @@ def annotation_count_per_user():
     """
         Analytic 4_1
     """
-    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
 
     # 4_1 annotationcount per user
     rdd = text_file.map(lambda line: [get_columns(line)[0], get_columns(line)[6]]).flatMap(
         lambda user_text: name_and_annotation(
             user_text[0], user_text[1].split(','))
-    ).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
+    ).map(lambda annotation: (annotation, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
 
-    # Output ((a=name_lastname, b=word) c=annotationcount)
+    # Output ((a=name_lastname, b=annotation) c=annotationcount)
     # This is sorted by user and by annotationcount
     for i in rdd:
         ((a, b), c) = i
@@ -43,15 +43,15 @@ def annotation_count_per_party():
         Analytic 4_2 
     """
 
-    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
 
     # 4_2 annotationcount per party
     rdd = text_file.map(lambda line: [get_columns(line)[1], get_columns(line)[6]]).flatMap(
         lambda user_text: name_and_annotation(
             user_text[0], user_text[1].split(','))
-    ).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
+    ).map(lambda annotation: (annotation, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
 
-    # Output ((a=party, b=word) c=annotationcount)
+    # Output ((a=party, b=annotation) c=annotationcount)
     # This is sorted by party and by annotationcount
     for i in rdd:
         ((a, b), c) = i
@@ -73,7 +73,7 @@ def annotation_count_per_party_after_date(date_after):
         Analytic 4_3
     """
 
-    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
 
     # 4_3 annotationcount per party, after date
     rdd = text_file.map(lambda line: [get_columns(line)[1], get_columns(line)[2], get_columns(line)[6]]).filter(
@@ -82,9 +82,9 @@ def annotation_count_per_party_after_date(date_after):
     ).flatMap(
         lambda user_text: name_and_annotation(
             user_text[0], user_text[2].split(','))
-    ).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
+    ).map(lambda annotation: (annotation, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
 
-    # Output ((a=party, b=word) c=annotationcount)
+    # Output ((a=party, b=annotation) c=annotationcount)
     # This is sorted by party and by annotationcount
     # And filtered for tweets after the given date.
     for i in rdd:
