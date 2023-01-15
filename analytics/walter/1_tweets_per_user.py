@@ -25,26 +25,51 @@ def sort_Tuple(tup):
     return tup
 
 
-text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
+def analysis_tweets_per_user():
 
-rdd = text_file.map(lambda x: get_columns(x)[0]).map(
-    lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
+    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
 
-sorted = sort_Tuple(rdd)
-cnt = 0
-#Small hack to make the users and tweets into iterables
-tweets_numbers = []
-users = []
-for user, tweets in sorted:
-    cnt += 1
-    print(cnt, user, tweets)
-    users.append(user)
-    tweets_numbers.append(tweets)
+    rdd = text_file.map(lambda x: get_columns(x)[0]).map(
+        lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
 
-# Write into CSV the result    
-with open('data_analyzed/tweet_per_user.csv', 'w', newline='') as f:
-    writer = csv.writer(f)
-    writer.writerow(["username", "tweet count"])
-    for i in range(len(users)):
-        writer.writerow([users[i], tweets_numbers[i]])
-    
+    sorted = sort_Tuple(rdd)
+    cnt = 0
+    # Small hack to make the users and tweets into iterables
+    tweets_numbers = []
+    users = []
+    for user, tweets in sorted:
+        cnt += 1
+        print(cnt, user, tweets)
+        users.append(user)
+        tweets_numbers.append(tweets)
+    return users, tweets_numbers
+
+def analysis_tweets_per_party():
+
+    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
+
+    rdd = text_file.map(lambda x: get_columns(x)[1]).map(
+        lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
+
+    sorted = sort_Tuple(rdd)
+    cnt = 0
+    # Small hack to make the users and tweets into iterables
+    tweets_numbers = []
+    party = []
+    for user, tweets in sorted:
+        cnt += 1
+        print(cnt, user, tweets)
+        party.append(user)
+        tweets_numbers.append(tweets)
+    return party, tweets_numbers
+
+
+# users, tweets_numbers = analysis_tweets_per_user()
+party, tweets_numbers = analysis_tweets_per_party()
+
+# Write into CSV the result
+# with open('data_analyzed/tweet_per_user.csv', 'w', newline='') as f:
+#     writer = csv.writer(f)
+#     writer.writerow(["username", "tweet count"])
+#     for i in range(len(users)):
+#         writer.writerow([users[i], tweets_numbers[i]])
