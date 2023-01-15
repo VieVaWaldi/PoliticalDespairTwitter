@@ -2,6 +2,7 @@
 
 from pyspark import SparkContext, SparkConf
 import datetime
+import csv
 
 
 confCluster = SparkConf().setAppName("WordCount")
@@ -84,11 +85,24 @@ def word_count_per_party_after_date(date_after):
     # Output ((a=party, b=word) c=wordcount)
     # This is sorted by party and by wordcount
     # And filtered for tweets after the given date.
+
+    # open the CSV file and write the headers
+    with open('data_preprocessed/3_word_count_per_party_after_date.csv', 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["party", "word", "wordcount"])
+        f.close()
+
     for i in rdd:
         ((a, b), c) = i
         print(a, b, c)
+        # append the rest of data
+        if (c > 400): # only for words that are used more than 400 times
+            with open('data_preprocessed/3_word_count_per_party_after_date.csv', 'a', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow([a, b, c])
+                f.close()
 
 
 # word_count_per_user()
 # word_count_per_party()
-# word_count_per_party_after_date('2022-03-01')
+word_count_per_party_after_date('2022-03-01')
