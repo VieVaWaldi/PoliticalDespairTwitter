@@ -42,7 +42,7 @@ for user, tweets in sorted:
     tweets_numbers.append(tweets)
 
 # Write into CSV the result    
-with open('tweet_per_user.csv', 'w', newline='') as f:
+with open('data_analyzed/tweet_per_user.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(["username", "tweet count"])
     for i in range(len(users)):
