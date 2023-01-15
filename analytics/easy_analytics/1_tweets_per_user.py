@@ -48,7 +48,7 @@ def analysis_tweets_per_user():
 
 def analysis_tweets_per_party():
 
-    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
 
     rdd = text_file.map(lambda x: get_columns(x)[1]).map(
         lambda word: (word, 1)).reduceByKey(lambda a, b: a + b).collect()
@@ -97,15 +97,15 @@ def analysis_tweets_per_party_with_date(date_after='2022-03-01'):
 ########## Analysis without date
 
 # users, tweets_numbers = analysis_tweets_per_user()
-# party, tweets_numbers = analysis_tweets_per_party()
+party, tweets_numbers = analysis_tweets_per_party()
 
 # Write into CSV the result
-# with open('data_preprocessed/tweet_per_user.csv', 'w', newline='') as f:
-#     writer = csv.writer(f)
-#     writer.writerow(["username", "tweet count"])
-#     for i in range(len(users)):
-#         writer.writerow([users[i], tweets_numbers[i]])
+with open('data_preprocessed/1_tweet_per_party.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(["party", "tweet count"])
+    for i in range(len(party)):
+        writer.writerow([party[i], tweets_numbers[i]])
 
 
 ########## Analysis with date
-analysis_tweets_per_party_with_date(date_after='2022-03-01')
+# analysis_tweets_per_party_with_date(date_after='2022-03-01')
