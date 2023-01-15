@@ -2,6 +2,7 @@
 
 from pyspark import SparkContext, SparkConf
 import datetime
+import csv
 
 
 confCluster = SparkConf().setAppName("hashtagCount")
@@ -23,7 +24,7 @@ def hashtag_count_per_user():
     """
         Analytic 5_1
     """
-    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
 
     # 5_1 hashtagcount per user
     rdd = text_file.map(lambda line: [get_columns(line)[0], get_columns(line)[5]]).flatMap(
@@ -43,7 +44,7 @@ def hashtag_count_per_party():
         Analytic 5_2 
     """
 
-    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
 
     # 5_2 hashtagcount per party
     rdd = text_file.map(lambda line: [get_columns(line)[1], get_columns(line)[5]]).flatMap(
@@ -74,7 +75,7 @@ def hashtag_count_per_party_after_date(d_start, d_end):
         Analytic 5_3
     """
 
-    text_file = sc.textFile("data_sanitized")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
 
     # 5_3 hashtagcount per party, after date
     rdd = text_file.map(lambda line: [get_columns(line)[1], get_columns(line)[2], get_columns(line)[5]]).filter(
@@ -85,15 +86,25 @@ def hashtag_count_per_party_after_date(d_start, d_end):
             user_text[0], user_text[2].split(','))
     ).map(lambda hashtag: (hashtag, 1)).reduceByKey(lambda a, b: a + b).sortBy(lambda x: x[1]).sortBy(lambda x: x[0][0]).collect()
 
+    # open the CSV file and write the headers
+    with open('data_preprocessed/5_hastag_count_per_party_after_date.csv', 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(["party", "hashtag", "hashtag count"])
+        f.close()
+
     # Output ((a=party, b=hashtag) c=hashtagcount)
     # This is sorted by party and by hashtagcount
     # And filtered for tweets after the given date.
     for i in rdd:
         ((a, b), c) = i
         print(a, b, c)
+        with open('data_preprocessed/5_hastag_count_per_party_after_date.csv', 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow([a, b, c])
+            f.close()
 
 
 # hashtags are other users mentioned in a tweet
 # hashtag_count_per_user()
 # hashtag_count_per_party()
-hashtag_count_per_party_after_date(d_start='2022-03-01', d_end='2022-04-01')
+hashtag_count_per_party_after_date(d_start='1900-03-01', d_end='2023-04-01')
