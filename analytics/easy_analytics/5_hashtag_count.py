@@ -24,7 +24,7 @@ def hashtag_count_per_user():
     """
         Analytic 5_1
     """
-    text_file = sc.textFile("data_sanitized_2")  # /A._McEachin.csv
+    text_file = sc.textFile("data_sanitized_2")
 
     # 5_1 hashtagcount per user
     rdd = text_file.map(lambda line: [get_columns(line)[0], get_columns(line)[5]]).flatMap(

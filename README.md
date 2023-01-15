@@ -62,9 +62,11 @@ File with UserName and Party
 
 Sentiment analysis using TextBlob with 2 measure for each tweet: polarity (-1 negative sentiment, 1 positive sentiment) and subjectivity (0 is factual statment, 1 is personal opinion).
 
-- [ ] Sentiment Analysis (user, party, date, polarity, subjectivity): for each tweet
+- [x] Sentiment Analysis (user, party, polarity, subjectivity): for each tweet
 
-- [ ] with filter for time
+- [x] Sentiment Analysis (user, party, polarity, subjectivity): on avg for user
+
+- [x] with filter for time
 
 - [ ] with filter for category 
 - [ ] sentiment only for one specific hashtag
