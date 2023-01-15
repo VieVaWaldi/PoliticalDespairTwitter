@@ -49,11 +49,13 @@ File with UserName and Party
 - [x] Word count per party
 - [x] This in a time frame (since ukraine war, ...)
 
-- [ ] Most used annotations sorted by party
-- [ ] This in a time frame (...)
+- [x] Most used annotations per user
+- [x] Most used annotations sorted by party
+- [x] This in a time frame (...)
 
-- [ ] Most used hashtags sorted by party
-- [ ] This in a time frame (...)
+- [x] Most used hashtags per user
+- [x] Most used hashtags sorted by party
+- [x] This in a time frame (...)
 
 
 ### More complicated analysis:
