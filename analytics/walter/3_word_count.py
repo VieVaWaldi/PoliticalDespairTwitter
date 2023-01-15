@@ -76,6 +76,6 @@ def word_count_per_party_after_date(date_after):
             print(a, b, c)
 
 
-word_count_per_user()
+# word_count_per_user()
 # word_count_per_party()
-# word_count_per_party_after_date('2022-03-01')
+word_count_per_party_after_date('2022-03-01')

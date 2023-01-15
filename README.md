@@ -10,7 +10,7 @@
 
 ## Get data 
 
-- [ ] Still missing about 20%
+- [x] Done
 
 Library to get more from the API, more tweets and with a larger time line -> Optimized-Modified-GetOldTweets3-OMGOT
 

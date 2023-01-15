@@ -115,12 +115,19 @@ def get_new_user_name(user_file):
 
 def save_sanitized_file(user_file, path, sanitized_tweets):
 
-    new_name, party = get_new_user_name(user_file)
+    if len(sanitized_tweets) == 0:
+        return
+    try:
+        new_name, party = get_new_user_name(user_file)
+    except:
+        print('Opssie doopsie f u')
+        return
 
     with open(f".{path}{new_name}.csv", 'w', newline='') as file:
 
         writer = csv.writer(file, delimiter=";")
-        writer.writerow(["User", "Party", "Date", "Time", "Text", "Mentions", "Hashtags"])
+        writer.writerow(["User", "Party", "Date", "Time",
+                        "Text", "Mentions", "Hashtags"])
 
         for san_tweet in sanitized_tweets:
             if san_tweet == None:

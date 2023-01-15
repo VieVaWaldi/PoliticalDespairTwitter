@@ -4,7 +4,7 @@ from pyspark import SparkContext, SparkConf
 import csv
 
 confCluster = SparkConf().setAppName("TweetsPerUser")
-sc = SparkContext(conf=confCluster)
+sc = SparkContext(conf=confCluster).getOrCreate()
 
 
 def get_columns(tweet):
