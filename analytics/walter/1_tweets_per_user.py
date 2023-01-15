@@ -64,12 +64,12 @@ def analysis_tweets_per_party():
     return party, tweets_numbers
 
 
-# users, tweets_numbers = analysis_tweets_per_user()
-party, tweets_numbers = analysis_tweets_per_party()
+users, tweets_numbers = analysis_tweets_per_user()
+# party, tweets_numbers = analysis_tweets_per_party()
 
 # Write into CSV the result
-# with open('data_analyzed/tweet_per_user.csv', 'w', newline='') as f:
-#     writer = csv.writer(f)
-#     writer.writerow(["username", "tweet count"])
-#     for i in range(len(users)):
-#         writer.writerow([users[i], tweets_numbers[i]])
+with open('data_preprocessed/tweet_per_user.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(["username", "tweet count"])
+    for i in range(len(users)):
+        writer.writerow([users[i], tweets_numbers[i]])
