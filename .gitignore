@@ -5,6 +5,7 @@
 
 /data
 /data_sanitized
+/data_analyzed
 
 ### macOS ###
 # General
