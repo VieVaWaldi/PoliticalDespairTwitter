@@ -127,7 +127,7 @@ def save_sanitized_file(user_file, path, sanitized_tweets):
 
         writer = csv.writer(file, delimiter=";")
         writer.writerow(["User", "Party", "Date", "Time",
-                        "Text", "Mentions", "Hashtags"])
+                        "Text", "Hashtags", "Mentions"])
 
         for san_tweet in sanitized_tweets:
             if san_tweet == None:
