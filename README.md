@@ -67,6 +67,7 @@ Sentiment analysis using TextBlob with 2 measure for each tweet: polarity (-1 ne
 - [ ] with filter for time
 
 - [ ] with filter for category 
+- [ ] sentiment only for one specific hashtag
 - [ ] sentiment only for all countries
 - [ ] sentiment only for specific country like germany
 - [ ] sentiment only for companies or specific company

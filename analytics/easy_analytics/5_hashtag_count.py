@@ -59,16 +59,17 @@ def hashtag_count_per_party():
         print(a, b, c)
 
 
-def date_greater_than(d1, d2='2022-03-01'):
+def date_greater_than(date, date_start='2000-03-01', date_end='2000-03-01'):
     try:
-        d1 = datetime.datetime.strptime(d1, '%Y-%m-%d')
-        d2 = datetime.datetime.strptime(d2, '%Y-%m-%d')
+        date = datetime.datetime.strptime(date, '%Y-%m-%d')
+        date_start = datetime.datetime.strptime(date_start, '%Y-%m-%d')
+        date_end = datetime.datetime.strptime(date_end, '%Y-%m-%d')
     except:
         return False
-    return d1 > d2
+    return date > date_start and date < date_end
 
 
-def hashtag_count_per_party_after_date(date_after):
+def hashtag_count_per_party_after_date(d_start, d_end):
     """
         Analytic 5_3
     """
@@ -78,7 +79,7 @@ def hashtag_count_per_party_after_date(date_after):
     # 5_3 hashtagcount per party, after date
     rdd = text_file.map(lambda line: [get_columns(line)[1], get_columns(line)[2], get_columns(line)[5]]).filter(
         lambda party_date_text: date_greater_than(
-            party_date_text[1], date_after)
+            party_date_text[1], d_start, d_end)
     ).flatMap(
         lambda user_text: name_and_hashtag(
             user_text[0], user_text[2].split(','))
@@ -93,6 +94,6 @@ def hashtag_count_per_party_after_date(date_after):
 
 
 # hashtags are other users mentioned in a tweet
-hashtag_count_per_user()
+# hashtag_count_per_user()
 # hashtag_count_per_party()
-# hashtag_count_per_party_after_date('2022-03-01')
+hashtag_count_per_party_after_date(d_start='2022-03-01', d_end='2022-04-01')

@@ -38,7 +38,7 @@ def sentiment(tweets: list):
 
     sentiment_per_tweet = []
     polarity_per_tweet = []
-    # print(tweets) 
+    # print(tweets)
 
     testimonial = tb(tweets[1])
 
@@ -96,13 +96,11 @@ def avg_reduce_func(value1, value2):
     return (value1[0], (value1[1][0]+value1[1][1]), (value2[2][0] + value2[2][1]))
 
 
-def main():
+def main(dir='data_sanitized_2'):
 
     confCluster = SparkConf().setAppName("Sentiment").setMaster("local[6]")
     sc = SparkContext.getOrCreate(conf=confCluster)
-    text_files = sc.textFile(DATA_DIRECTORY)  # /A._McEachin.csv
-
-    #rdd = text_files.map(lambda line: [get_columns(line)[1], get_columns(line)[4]]).collect()
+    text_files = sc.textFile(dir)
 
     data_rdd = text_files.map(lambda line: [get_columns(line)[0], get_columns(line)[4]]
                               ).map(lambda user_text: sentiment(user_text)).collect()
@@ -138,5 +136,4 @@ def main():
     sc.stop()
 
 
-DATA_DIRECTORY = 'data_sanitized_2'
-main()
+main(dir='data_sanitized_2')
