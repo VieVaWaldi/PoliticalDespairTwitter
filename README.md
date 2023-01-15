@@ -43,7 +43,7 @@ File with UserName and Party
 
 - [x] How many tweets per user
 
-- [ ] Tweet Length comparison per user
+- [x] Tweet Length comparison per user
 
 - [x] Word count per user -> Word cloud visualization
 - [x] Word count per party
