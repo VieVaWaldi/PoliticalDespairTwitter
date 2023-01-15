@@ -45,4 +45,6 @@ for user, tweets in sorted:
 with open('tweet_per_user.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(["username", "tweet count"])
-    writer.writerows([users, tweets_numbers])
+    for i in range(len(users)):
+        writer.writerow([users[i], tweets_numbers[i]])
+    
