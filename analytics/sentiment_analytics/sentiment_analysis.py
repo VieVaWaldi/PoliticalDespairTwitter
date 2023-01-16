@@ -165,6 +165,13 @@ data_set = sentiment_analysis(category, category_hashtag,
 
 # >>> Saves aoutamically, just give it a good name lol, have fun :)
 file_name = "Hi_KENNY"
+# Write initial header of the CSV file
+with open(f'data_preprocessed/sentiment_{file_name}.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(["Name", "Party", "Polarity", "Subjectivity"])
+    f.close()
+
+# Write the content of the CSV file
 with open(f'data_preprocessed/sentiment_{file_name}.csv', 'a', newline='') as f:
     writer = csv.writer(f)
     for line in data_set:
