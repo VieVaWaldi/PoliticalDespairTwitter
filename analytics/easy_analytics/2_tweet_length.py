@@ -49,7 +49,7 @@ def analysis_tweet_length_per_user():
         party = b1
         avg_tweet_length_per_user = c1/c2
 
-        # @Kenny here is you data
+        # @Kenny here is your data
 
 
 # RUN ANALYSIS #

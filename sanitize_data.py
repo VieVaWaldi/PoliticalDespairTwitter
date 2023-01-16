@@ -1,7 +1,7 @@
-import advertools as adv
-import nltk
 from nltk.corpus import stopwords
 from cleantext import clean
+
+import nltk
 import csv
 import re
 import os
@@ -12,9 +12,9 @@ STOP_WORDS = set(stopwords.words("english"))
 
 def sorted_alphanumeric(data):
     """
-    Sorts alphanumerically.
-    :param data: data to be sorted e.g. a list
-    :return: sorted data alphanumerically e.g. "User_2" before "User_10"
+        Sorts alphanumerically.
+        :param data: data to be sorted e.g. a list
+        :return: sorted data alphanumerically e.g. "User_2" before "User_10"
     """
     def convert(text): return int(text) if text.isdigit() else text.lower()
     def alphanum_key(key): return [convert(c)
@@ -22,7 +22,7 @@ def sorted_alphanumeric(data):
     return sorted(data, key=alphanum_key)
 
 
-def ASCIIFilter(tweet):
+def filter_ASCII(tweet):
     ASCIITweet = ""
     for c in tweet:
         if ord(c) > 127:
@@ -33,22 +33,24 @@ def ASCIIFilter(tweet):
     return ASCIITweet
 
 
-def is_sonderfall(word):
-    if word == "&amp;":
-        return True
-    # Remove URL
+def remove_url(word):
+    """
+        They all look the same.
+    """
     if word.find("http://") == 0 or word.find("https://") == 0:
+        return True
+    if word == "&amp;":
         return True
     return False
 
 
-def tweetDecomposer(tweet):
+def tweet_decomposer(tweet):
 
-    # Stop on last line
+    # Ignore last line
     if tweet.find("No more data. finished scraping!!") == 0:
         return
 
-    # Save, then remove emojis
+    # Remove emojis
     # emojis = adv.extract_emoji(tweet)
     tweet = clean(tweet, no_emoji=True)
 
@@ -76,11 +78,14 @@ def tweetDecomposer(tweet):
 
     for tweetWord in tweetWords:
 
-        if is_sonderfall(tweetWord):
-            continue
-
+        if remove_url(tweetWord):
+            """
+        They all look the same.
+            """
         # Annotations
         if tweetWord[0] == "@":
+            continue
+
             if tweetWord[1:] == " ":
                 continue
             annotation = tweetWord[1:].strip()
@@ -158,7 +163,7 @@ for user_file in user_file_names:
     with open(path + user_file, 'r') as file:
         for line in file:
             for word in line.split("\n\n"):
-                current_user_sanitized.append(tweetDecomposer(word))
+                current_user_sanitized.append(tweet_decomposer(word))
         save_sanitized_file(user_file, directory_sanitized,
                             current_user_sanitized)
         current_user_sanitized = []

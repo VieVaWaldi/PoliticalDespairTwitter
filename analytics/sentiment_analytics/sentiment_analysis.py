@@ -2,8 +2,10 @@
 
 from pyspark import SparkContext, SparkConf
 from textblob import TextBlob as tb
+
 import datetime
 import csv
+import time
 
 confCluster = SparkConf().setAppName("TweetsPerUser")
 sc = SparkContext(conf=confCluster).getOrCreate()
@@ -69,7 +71,9 @@ def contains_category(tweet, category):
 
 def sentiment_block(category, category_hashtag, date_start, date_end, sent):
     """
+        This is the MapReduce part.
         Output: (user, party, polarity): for each tweet
+        Is zipped in sentiment_analysis.
     """
 
     text_file = sc.textFile("data_sanitized")
@@ -125,6 +129,7 @@ def sentiment_block(category, category_hashtag, date_start, date_end, sent):
 
 
 def sentiment_analysis(category, category_hashtag, date_start='1999-01-01', date_end='2100-01-01'):
+    start = time.time()
     pol_list_2d = sentiment_block(
         category, category_hashtag, date_start, date_end, sent='pol')
     sub_list_2d = sentiment_block(
@@ -137,13 +142,15 @@ def sentiment_analysis(category, category_hashtag, date_start='1999-01-01', date
                             [1], pol_list_2d[i][2], sub_list_2d[i][2]])
             print(pol_list_2d[i][0], pol_list_2d[i][1],
                   pol_list_2d[i][2], sub_list_2d[i][2])
+    print(f">>> Job Done! Took {time.time()-start} seconds.")
     return data_set
 
+##############################
 # >>> Sentiment Analysis <<< #
-
 
 # >>> 1st Argument. Keep only tweets with words from this list
 # >>> IsIgnored when None
+
 
 # category = None
 # category = ['covid', 'covid19']
