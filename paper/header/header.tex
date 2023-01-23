@@ -1,0 +1,158 @@
+% Dokumentformat
+\documentclass[12pt, a4paper]{scrreprt}
+%\documentclass[12pt, a4paper]{scrreprt}
+
+% Zeichensatz festlegen
+\usepackage[utf8]{inputenc} %Linux
+% \usepackage[latin1]{inputenc} %Windoof
+% \usepackage[T1]{fontenc}
+% \usepackage[ngerman]{babel}
+\usepackage[english]{babel}
+
+% Damit Text ``gesperrt'' werden kann
+\usepackage{soul}
+
+\usepackage{float}
+
+% Paket fuer Grafiken
+\usepackage{graphicx}
+
+% Pakete fuer Tabellen
+% \usepackage{color,colortbl}
+\usepackage{booktabs}
+
+% Paket fuer Kopf und Fusszeilen
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% remember chapter number and title
+\renewcommand{\chaptermark}[1]%
+	{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]%
+	{\markright{\thesection\ #1}}
+
+% positioning
+\lhead[\fancyplain{}{\bfseries\thepage}]%
+	{\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]%
+	{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+\fancypagestyle{plain}{%
+
+\lhead[\fancyplain{}{\bfseries\thepage}]%
+	{\fancyplain{}{}}
+
+\rhead[\fancyplain{}{}]%
+	{\fancyplain{}{\bfseries\thepage}}
+}
+
+% Einruecken verhindern
+\parindent 0pt
+
+% Leerzeile nach Absatz einfuegen
+\parskip 12pt
+
+% Zeilenabstaende
+\usepackage{setspace}
+
+% Roemische Zahlen
+\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{}}}
+
+% Bibtex
+\usepackage{bibgerm}
+%\usepackage{babelbib}
+
+% Abkürzungsverzeichnis
+\usepackage[printonlyused]{acronym}
+
+% Bilder nebeneinander, ...
+\usepackage{subfig}
+
+% Abbildungsverzeichnistiefe einstellen
+\captionsetup{lofdepth=4}
+
+% Eurosymbol
+\usepackage[right]{eurosym}
+
+% Fussnoten ueber alle kapitel zaehlen
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+% Listings
+% \usepackage{listings}
+% \usepackage{xcolor}
+% \definecolor{hellgrau}{rgb}{0.9,0.9,0.9}
+% \definecolor{colKeys}{rgb}{0,0,1}
+% \definecolor{colIdentifier}{rgb}{0,0,0}
+% \definecolor{colComments}{rgb}{1,0,0}
+% \definecolor{colString}{rgb}{0,0.5,0}
+% \lstset{
+%     float=hbp,
+%      basicstyle=\ttfamily\color{black}\small,
+% % %     basicstyle=\ttfamily\color{black}\small\smaller,
+%     identifierstyle=\color{colIdentifier},
+%     keywordstyle=\color{colKeys},
+%     stringstyle=\color{colString},
+%     commentstyle=\color{colComments},
+%     columns=flexible,
+%     tabsize=2,
+%     frame=single,
+%     extendedchars=true,
+%     showspaces=false,
+%     showstringspaces=false,
+%     numbers=none,
+%     numberstyle=\tiny,
+%     breaklines=true,
+%     backgroundcolor=\color{hellgrau},
+%     breakautoindent=true
+% }
+
+% Für PDF-Header
+\usepackage[
+	bookmarks=true,
+	bookmarksopen=true,
+	bookmarksnumbered=true,
+	breaklinks=true,
+	colorlinks=true,
+	linkcolor=black,
+	anchorcolor=black,
+	citecolor=black,
+	filecolor=black,
+	menucolor=black,
+	urlcolor=black
+]{hyperref}
+
+\hypersetup{
+	pdfstartpage=1,
+	pdftitle={Bachelorarbeit},
+	pdfauthor={Vorname Nachname},
+	pdfsubject={Titel der Arbeit},
+	pdfkeywords={Bachelorarbeit},
+}
+
+% mehrere Literaturverzeichnisse
+\usepackage{multibib}
+
+% Definition des citebefehls für Literatur
+\newcites{lit}{Bibliography}
+% Definition des citebefehls für Internet
+\newcites{int}{Internet sources}
+
+% ############### Weiteres Zeug für moi #######################
+% schöne autotabellen
+\usepackage{booktabs}
+
+% Farben! 
+\usepackage{xcolor}
+
+% Mathe Zeichen
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand{\R}{\mathbb{R}}
+
+% hyperrefs
+\usepackage{hyperref}
+
+% svg 
+%\usepackage{svg}

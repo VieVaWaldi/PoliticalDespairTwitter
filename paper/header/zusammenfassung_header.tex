@@ -1,0 +1,77 @@
+% Dokumentformat
+\documentclass[12pt, a4paper]{scrreprt}
+%\documentclass[12pt, a4paper]{scrreprt}
+
+% Zeichensatz festlegen
+\usepackage[utf8]{inputenc} %Linux
+% \usepackage[latin1]{inputenc} %Windoof
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+% Damit Text ``gesperrt'' werden kann
+\usepackage{soul}
+
+% Pakete fuer Grafiken
+\usepackage{graphicx}
+
+% Pakete fuer Tabellen
+\usepackage{color,colortbl}
+\usepackage{booktabs}
+
+% Paket fuer Kopf und Fusszeilen
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% remember chapter number and title
+\renewcommand{\chaptermark}[1]%
+	{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]%
+	{\markright{\thesection\ #1}}
+
+% positioning
+\lhead[\fancyplain{}{\bfseries\thepage}]%
+	{\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]%
+	{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+\fancypagestyle{plain}{%
+
+\lhead[\fancyplain{}{\bfseries\thepage}]%
+	{\fancyplain{}{}}
+
+\rhead[\fancyplain{}{}]%
+	{\fancyplain{}{\bfseries\thepage}}
+}
+
+% Einruecken verhindern
+\parindent 0pt
+
+% Leerzeile nach Absatz einfuegen
+\parskip 12pt
+
+% Zeilenabstaende
+\usepackage{setspace}
+
+% Für PDF-Header
+\usepackage[
+	bookmarks=true,
+	bookmarksopen=true,
+	bookmarksnumbered=true,
+	breaklinks=true,
+	colorlinks=true,
+	linkcolor=black,
+	anchorcolor=black,
+	citecolor=black,
+	filecolor=black,
+	menucolor=black,
+	urlcolor=black
+]{hyperref}
+
+\hypersetup{
+	pdfstartpage=1,
+	pdftitle={Zusammenfassung - Bachelorarbeit},
+	pdfauthor={Vorname Nachname},
+	pdfsubject={Titel der Arbeit},
+	pdfkeywords={Bachelorarbeit, Zusammenfassung},
+}
