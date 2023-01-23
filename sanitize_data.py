@@ -1,6 +1,7 @@
 from nltk.corpus import stopwords
 from cleantext import clean
 
+import time
 import nltk
 import csv
 import re
@@ -22,7 +23,7 @@ def sorted_alphanumeric(data):
     return sorted(data, key=alphanum_key)
 
 
-def filter_ASCII(tweet):
+def ASCIIFilter(tweet):
     ASCIITweet = ""
     for c in tweet:
         if ord(c) > 127:
@@ -34,23 +35,20 @@ def filter_ASCII(tweet):
 
 
 def remove_url(word):
-    """
-        They all look the same.
-    """
-    if word.find("http://") == 0 or word.find("https://") == 0:
-        return True
     if word == "&amp;":
+        return True
+    if word.find("http://") == 0 or word.find("https://") == 0:
         return True
     return False
 
 
-def tweet_decomposer(tweet):
+def tweetDecomposer(tweet):
 
-    # Ignore last line
+    # Stop on last line
     if tweet.find("No more data. finished scraping!!") == 0:
         return
 
-    # Remove emojis
+    # Save, then remove emojis
     # emojis = adv.extract_emoji(tweet)
     tweet = clean(tweet, no_emoji=True)
 
@@ -79,13 +77,10 @@ def tweet_decomposer(tweet):
     for tweetWord in tweetWords:
 
         if remove_url(tweetWord):
-            """
-        They all look the same.
-            """
-        # Annotations
-        if tweetWord[0] == "@":
             continue
 
+        # Annotations
+        if tweetWord[0] == "@":
             if tweetWord[1:] == " ":
                 continue
             annotation = tweetWord[1:].strip()
@@ -150,7 +145,7 @@ def save_sanitized_file(user_file, path, sanitized_tweets):
             writer.writerow([new_name, party, san_tweet[0], san_tweet[1],
                             san_tweet[2], hashtags, annotations])
 
-
+start = time.time()
 directory = '/data/'
 directory_sanitized = '/data_sanitized/'
 
@@ -163,7 +158,9 @@ for user_file in user_file_names:
     with open(path + user_file, 'r') as file:
         for line in file:
             for word in line.split("\n\n"):
-                current_user_sanitized.append(tweet_decomposer(word))
+                current_user_sanitized.append(tweetDecomposer(word))
         save_sanitized_file(user_file, directory_sanitized,
                             current_user_sanitized)
         current_user_sanitized = []
+
+print(">>>> JOB DONE, it took " + str(round(time.time() - start, 2)) + " seconds")

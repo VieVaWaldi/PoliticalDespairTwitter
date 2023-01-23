@@ -15,6 +15,7 @@
 Library to get more from the API, more tweets and with a larger time line -> Optimized-Modified-GetOldTweets3-OMGOT
 
 TweetFormat:
+
 ID YYY-MM-DD HH:MM:SS +TZTZ <USERNAME> TWEET
 
 ### Sanitize
@@ -35,7 +36,8 @@ What can be in a tweet:
 **New Format**
 
 File with UserName and Party
--> DATE, TIME, TWEET, #HASHTAGS (seperate), @mentions 
+
+user; party; date; time; tweet; #h1, #h2; @1, @1
 
 ## Spark
 
@@ -60,7 +62,7 @@ File with UserName and Party
 
 ### More complicated analysis:
 
-Sentiment analysis using TextBlob with 2 measure for each tweet: polarity (-1 negative sentiment, 1 positive sentiment) and subjectivity (0 is factual statment, 1 is personal opinion).
+Sentiment analysis using TextBlob with 2 measures for each tweet: polarity (-1 negative sentiment, 1 positive sentiment) and subjectivity (0 is factual statment, 1 is personal opinion).
 
 - [x] Sentiment Analysis (user, party, polarity, subjectivity): for each tweet
 

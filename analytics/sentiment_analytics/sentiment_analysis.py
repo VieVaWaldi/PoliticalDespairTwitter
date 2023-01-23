@@ -154,8 +154,9 @@ def sentiment_analysis(category, category_hashtag, date_start='1999-01-01', date
 
 # category = None
 # category = ['covid', 'covid19']
-category = ['google', 'data', 'facebook', 'apple', 'meta']
-# category = ['war', 'ukraine']
+# category = ['google', 'data', 'facebook', 'apple', 'meta']
+# category = ['war', 'ukraine', 'putin']
+category = ['ukraine', 'selensky', 'Zelenskyy', 'Selenskyj', 'Wolodymyr' ]
 # category = get_list_of_countries() # I saved a list of all countries
 
 # >>> 2nd Argument. Keep only tweets with this hashtag
@@ -167,11 +168,11 @@ category_hashtag = None
 # >>> 3d argument, date_start and date_end. Only tweets from dates inbetween will be kept.
 # >>> Set to date_start='1999-01-01', date_end='2100-01-01' if all tweets should be kept.
 data_set = sentiment_analysis(category, category_hashtag,
-                              date_start='1999-01-01', date_end='2100-01-01')
+                              date_start='2022-02-01', date_end='2100-01-01')
 
 
 # >>> Saves aoutamically, just give it a good name lol, have fun :)
-file_name = "Hi_KENNY"
+file_name = "Categories-ukraine_selensky"
 # Write initial header of the CSV file
 with open(f'data_preprocessed/sentiment_{file_name}.csv', 'w', newline='') as f:
     writer = csv.writer(f)

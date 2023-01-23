@@ -7,5 +7,3 @@ do
   python GetOldTweets3/cli.py --username $rec_column3 > data/$rec_column3
   
 done < <(tail -n +2 user_list.csv)
-
-# python GetOldTweets3/cli.py --username "BarackObama"
