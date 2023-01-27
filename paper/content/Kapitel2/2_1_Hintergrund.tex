@@ -4,7 +4,6 @@
 	- Allgemeine Vorstellung der Packages ihr Vor und Nachteile
 	
 	\subsection{GetOldTweets3-Pakage}
-	%\begin{justify}
 	
 	GetOldTweets3 ist ein kostenlose Python 3 Packages mit welchen Twitterdaten ohne API-Schlüssel abgerufen werden können.
 	Mit GetOldTweets3 können Sie Tweets mit einer Vielzahl von Suchparametern wie Start-/Enddatum, Benutzername(n), Textabfrage 
@@ -30,31 +29,53 @@
 			        des Searchthrough Browsers von Twitter als JSON-Datei abgerufen werden können.}
 	\end{figure}
 	
-	
-	So kann durch eine paar Zeilen Code, wie man in der Abbildung \label{polPolar} sieht, eine bash-Datei erstellt werden, durch welche die Daten gesucht und 
-	abgespeichert werden. Das Scraping an sich kann durch die Größe der JSON-Datei einige Zeit in Anspruch nehmen. Wir haben gerade mal 2 Millionen Tweets 
+	So kann durch eine paar Zeilen Code, wie man in der Abbildung \label{CodeBeispiel} sieht, eine bash-Datei erstellt werden, durch welche die Daten gesucht 
+	und abgespeichert werden. Das Scraping an sich kann durch die Größe der JSON-Datei einige Zeit in Anspruch nehmen. Wir haben gerade mal 2 Millionen Tweets 
 	insgesamt bei einer Laufzeit von ca. 35 Stunden.  
 	
-	%\end{justify}
 
 	\subsection{NLTK-Natural language Toolkit}
-	%\begin{Absatz}
-	- Vllt Klären warum wir nicht NLTK verwendet haben, sondern Textblob
-	- Vorteile von Textblob gegenüber NLTK
-	- Nachteile von Nltk	
 	
-	%\end{Absatz}
-
+	NLTK ist ein Python Package für die Arbeit mit menschlichen Sprachdaten. Es bietet einfach zu bedienende Schnittstellen zu über 50 Korpora
+	und lexikalischen Ressourcen wie WordNet, zusammen mit einer Reihe von Textverarbeitungsbibliotheken für Klassifizierung, Tokenisierung, 
+	Stemming, Tagging, Parsing und semantische Schlussfolgerungen, Wrapper für industrielle NLP-Bibliotheken und ein aktives Diskussionsforum.\citeint{nltk} 
+	Aus diesem Grund bietet NLTK sehr viele Möglichkeiten zur Vorverarbeitung und Analyse, benötigt aber auch einen gewissen Zeitrahmen zur 
+	Einarbeitung in die Analysen. Aus diesen Grund hat sich das Forscherteam dafür entschieden NLTK nur zur Vorverarbeitung zu nutzen und TextBlob
+	für die Semantische Analyse zu nutzen. Warum sich für TextBlob entschieden wurde, wird genauer in 2.1.3 besprochen. So verwenden wir den Wordcorbus
+	von NLTK für englische Stoppworte, da wir diese nicht mit in unseren Analysen haben wollen. Für eine individuelle und sehr ausführliche semantische Analyse 
+	bietet NLTK sehr viele Möglichkeiten, durch die Interaktion mit verschiedenen Packages in Python, was aber den oben genannten Zeitrahmen benötigt, zum 
+	einarbeiten. Der Vorteil von NLTK gegenüber TextBlob sind genau diese Interaktionen mit anderen Packages. Für größere Projekte, bei denen man die 
+	semantische Analyse auch individuell anpassen möchte,sollte man eher die NLTK Bibliothek benutzen. NLTK ermöglicht es durch verschiedene 
+	Vorverarbeitungsschritte, welche in der Bibliothek eingebaut sind eine individuelle Pipeline und Analyse zu erstellen.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/Kapitel2/Code_Beispiel_2}
+			\caption{\label{fig:CodeBeispiel}Code Beispiel für das Arbeiten mit NLTK}{Tokenizierung und Tagging von Texten mit NLTK}
+	\end{figure}    	
+		
+	
+	
 	\subsection{TextBlob}
-	%\begin{Absatz}
-	- Textblob: Vllt. herausfinden wie die Berechnung stattgefunden hat	
-	- Vorteile von Textblob gegenüber NLTK
-	- Warum haben wir das Tool genutzt.	
 	
-	%\end{Absatz}
+	
+	- Nutzt eine Patternanalyse von der  pattern library --> Genauer Beschreiben was ist eine Patternanlyse? \\
+	- Vorteile von Textblob gegenüber NLTK\\
+		- Verwendet auch viele Bibliotheken und ein paar wordcorbus nicht ganz soviel wie NLTK\\ 
+		- Kann ohne viel Zeit aufwand verwendet werden\\
+		- Will man individuellere Pipelines bauen braucht man auch einen gewissen Zeitrahmen um sich einzulesen\\
+		- Bietet eine bessere Übersicht, da es auch noch nicht so groß ist wie NLTK\\
+		
+	- Warum haben wir das Tool genutzt.	\\
+		- Durch den einfachen output vom Import "from textblob import Textblob", welcher die polarität und subjektivität zurück gibt\\
+		- bietet eine sehr gute Anwendungsmöglichkeit für das Mapreduce\\
+		- Mit mehr zeit Hätte man auch noch ander Semantische Analysen die von TextBlob bereitgestellt werden verwenden können.\\
+		
 
+	
 	\subsection{Sparks}
 	%\begin{Absatz}
+	
 	- Aus der Vorlesung Vorteile von Spark finden und einbauen	
 	
 	%\end{Absatz}
