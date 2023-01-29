@@ -7,9 +7,17 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Code Beispiel für das Arbeiten mit NLTK\relax }}{5}{figure.caption.6}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Sanierungs-For-Schleife der Daten\relax }}{7}{figure.caption.7}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Republican Top 50 most used words\relax }}{11}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Democrat Top 50 most used words\relax }}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Top 10 most used words by Democrats\relax }}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Top 10 most used words by Republicans\relax }}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Sentiment towards Germany\relax }}{14}{figure.caption.12}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Ausschnitt eins der Sanierungsfunktion der Daten\relax }}{12}{figure.caption.8}%
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Ausschnitt eins der Sanierungsfunktion der Daten\relax }}{17}{figure.caption.13}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Ausschnitt eins der Sanierungsfunktion der Daten\relax }}{13}{figure.caption.9}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Ausschnitt eins der Sanierungsfunktion der Daten\relax }}{18}{figure.caption.14}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Sentiment towards Data and FAANG companies\relax }}{19}{figure.caption.15}%
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Sentiment in all tweets in general\relax }}{20}{figure.caption.16}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -1,25 +1,9 @@
 \section{MapReduce}
 
-Split csv’s by delimiter and map needed values in a tuple
-Filter for date or keywords
-Reduce per Query and save in csv
-
-How many tweets per user or party
-> Tweet Count mapping on 1 	| Reduce on sum
-Tweet Length comparison per user
-	> Tweet Word Count mapping 	| Reduce on sum and average
-%#Hashtag and @Mention Count per user or party
-%		> # or @ Count mapping 		| Reduce on sum 
+Folgendes Kapitel geht näher auf die MapReduce Funktionalität dieses Projektes ein. Die sanierten Tweets wurden jeweils im CSV Format in einer Datei pro Politiker*in exportiert. Um auf die einzelnen Spalten zuzugreifen, wird eine Spalte über das Trennzeichen getrennt und auf eine Liste gemappt, wovon die benötigten Spalten in ein Tupel \textit{gewrapt} werden. Mithilfe der Filterfunktionen von \textit{Spark} werden Tweets extrahiert, die in einem gewünschten Zeitraum liegen, Keywords oder bestimmte Hashtags enthalten. Der Output wird nach User und Partei sortiert, je nach Query reduziert und in einer CSV Datei für die Analyse exportiert.
 
 
+Naivere Funktionen befassen sich mit einer Reduktion auf die Anzahl der Tweets per User oder per angehöriger Partei. Dies funktioniert für eine Reduktion auf die Anzahl der Annotationen (im Tweet referenzierte User) und Anzahl der Hashtags gleich. Schließlich wurde die durchschnittliche Tweetlänge mit einer Reduktion auf die Summe der Tweetlänge durch ein Teilen mit der Tweetanzahl pro User und Partei gelöst.
 
 
-Sentiment Analysis per user and party, using Textblob
-Gathered the average sentiment > reduced for user or party
-Filtered for
-Time Frame
-Categories (can be any keyword in the tweet)
-Hashtags
-
-Beispiel Queries
-%> 	 Sentiment der Tweets von Demokraten mit #Harambe von 2016
+Die gleiche Funktionalität wurde ebenso für das Berechnen der durchschnittlichen Polarität und Subjektivität mit der Hilfe von \textit{TextBlob} gelöst. Um die Sentimentalitätsanalyse mächtiger zu machen, ist es möglich, die Sentimentalität eines Tweets auch für bestimmte Hashtags oder oben genannte Keywords zu berechnen. Unter anderem kann so eine Liste von Ländern hergenommen werden, um beispielsweise die Meinung gewisser Politiker*innen zu bestimmten Ländern zu quantifizieren. Allerdings muss angemerkt werden, dass die Analyse dementsprechend stark abhängig von der genannten Bibliothek ist.

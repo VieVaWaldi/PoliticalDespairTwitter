@@ -1,4 +1,4 @@
-\section{Background}
+\section{Used Libraries}
 
 In diesem Kapitel sollen die verwendeten Bibliotheken und der Grund für ihre Verwendung genauer beleuchtet werden. Damit Daten generiert werden konnten, wurde die Bibliothek \textit{GetOldTweets3} verwendet. Mit einer öffentlich zugänglichen Userliste für Politiker aus Amerika wurden mithife dieser Packages die Daten erhoben. Zur Weiterverarbeitung der Daten wurden \textit{NLTK} und \textit{TextBlob} genutzt. Beides sind Tools für die Verarbeitung von Sprache. Um eine Analyse über die verarbeiteten Ausgaben durch ein MapReduce laufen zu lassen, wurde schließlich Spark verwendet, um eine Zeit effiziente Verarbeitung zu gewährleisten.
 	
@@ -14,7 +14,7 @@ Die Analyse des Codes von \textit{GetOldTweets3} und die Funktionsweise des Sear
 			\caption{\label{fig:CodeBeispiel}Code Beispiel für das Scrapen der Tweets}{Ist eine Python Bibliothek mit der Twitter Daten durch den Scroll-Loader des Searchthrough Browsers von Twitter als JSON-Datei abgerufen werden können.}
 	\end{figure}
 	
-So kann durch eine paar Zeilen Code, wie in der Abbildung \label{CodeBeispiel} zu erkennen ist, eine Bash-Datei erstellt werden, durch welche die Daten gesucht und abgespeichert werden. Das Scraping kann durch die Größe der JSON-Datei einige Zeit in Anspruch nehmen. 2 Millionen Tweets haben insgesamt eine Laufzeit von ca. 35 Stunden verbucht.
+So kann durch eine paar Zeilen Code, wie in der Abbildung ~\ref{fig:CodeBeispiel} zu erkennen ist, eine Bash-Datei erstellt werden, durch welche die Daten gesucht und abgespeichert werden. Das Scraping kann durch die Größe der JSON-Datei einige Zeit in Anspruch nehmen. 2 Millionen Tweets haben insgesamt eine Laufzeit von ca. 35 Stunden verbucht.
 
 \subsection{NLTK-Natural language Toolkit}
 	
@@ -27,7 +27,7 @@ Für eine individuelle und sehr ausführliche semantische Analyse bietet NLTK se
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/Kapitel2/Code_Beispiel_2}
-		\caption{\label{fig:CodeBeispiel}Code Beispiel für das Arbeiten mit NLTK}{Tokenisierung und Tagging von Texten mit NLTK}
+		\caption{\label{fig:CodeBeispiel2}Code Beispiel für das Arbeiten mit NLTK}{Tokenisierung und Tagging von Texten mit NLTK}
 \end{figure}
 	
 \subsection{TextBlob}

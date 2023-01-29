@@ -7,17 +7,32 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[al.14]{politicalPolarization}
-\textsc{al.}, Michael~D.:
-\newblock \emph{Political Polarization in the American Public}.
-\newblock 2014
-
 \bibitem[boe18]{pattern}
 \textsc{boersennews}:
 \newblock \emph{Patternanalyse}.
 \newblock \url{https://www.boersennews.de/lexikon/begriff/pattern/852/}.
 \newblock \,Version:\,2018. --
 \newblock Last visited on 28.01.2023
+
+\bibitem[Dim14]{politicalPolarization}
+\textsc{Dimock}, Michael:
+\newblock \emph{Political Polarization in the American Public}.
+\newblock 2014
+
+\bibitem[Efu23]{mitSent}
+\textsc{Efu}, MIT:
+\newblock \emph{Global Sentiment}.
+\newblock \url{https://www.globalsentiment.mit.edu/}.
+\newblock \,Version:\,2023. --
+\newblock Last visited on 29.01.2023
+
+\bibitem[ES23]{sahulEs}
+\textsc{ES}, Sahul:
+\newblock \emph{Global Sentiment}.
+\newblock
+  \url{https://neptune.ai/blog/sentiment-analysis-python-textblob-vs-vader-vs-flair}.
+\newblock \,Version:\,2023. --
+\newblock Last visited on 29.01.2023
 
 \bibitem[Hen18]{github}
 \textsc{Henrique}, Jefferson:
