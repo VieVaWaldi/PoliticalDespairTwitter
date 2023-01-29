@@ -9,20 +9,38 @@
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=0.9\textwidth]{images/Kapitel2/Code_Datensanierung_1}
+		\includegraphics[width=0.9\textwidth]{images/Kapite2/Code_Datensanierung_1}
 		\caption{\label{fig:DataSan}Sanierungs-For-Schleife der Daten}
 	\end{figure}
 	
-	Die Variable "directory" und "directory_Sanitized" geben den Path an, in welchen Ordner die Daten gespeichert werden sollen. mit der bibliothek os von Python 
+	Die Variable \"directory" und \"directory_Sanitized" geben den Path an, in welchen Ordner die Daten gespeichert werden sollen. mit der bibliothek os von Python 
 	kann man zum Beispiel über "os.listdir(Path)" alle Dateinamen innerhalb dieses Ordners einlesen lassen. 
 	Über die Variable user_file_names bekommen wir eine Alphanumerisch sortierte Liste der Usernamen der Politiker zurück, welche wir dann über eine For-
-	Schleife durchgehen, da der Name der CSV-Dateien folgenden Muster entspricht, "Name_D" oder "Name_R". D steht für demokratisch und R für 
+	Schleife durchgehen, da der Name der CSV-Dateien folgenden Muster entspricht, \"Name_D" oder \"Name_R". D steht für demokratisch und R für 
 	republikanisch. In dieser Datensanierungsschleife wird die Funktion tweetDecomposer verwendet. Diese Funktion übernimmt in der vorliegenden Datensanierung die 
-	Hauptaufgabe. 
+	Hauptaufgabe.
 	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/Kapite2/Code_Datensanierung_2}
+		\caption{\label{fig:DataSanF1}Ausschnitt eins der Sanierungsfunktion der Daten}
+	\end{figure}
+	
+	Mit dem Bibliothek cleantext wurden die emojis aus dem Text entfernt, wie man in Abbildung \label{DataSanF1} in den ersten Zeilen der Funktion sehen kann.
+	Dann werden alle Worte innerhalb eines Tweets klein geschrieben und aufgetrennt, damit dann  die ID, die Zeitzone und der Username aus dem Tweet entfernt 
+	werden kann. Mit NLTK werden dann die Stoppworte durch ein join aus den Tweets entfernt, so das man zu den letzten Datensanierungsschritten kommen kann.
+	 
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/Kapite2/Code_Datensanierung_3}
+		\caption{\label{fig:DataSanF1}Ausschnitt eins der Sanierungsfunktion der Daten}
+	\end{figure}
+
+	Da die Annotations und Hashtags gespeichert werden sollen
+	- cleantext hat auch manche Emojis übersehn weswegen wir nochmal line 100 ausgeführt haben	
 	
 	- Was genau haben wir alles bei der Datensanierung gemacht?\\
-	- Wie haben wir das ganze gemacht? --> Erklären anhand von Ausschnitten unseres Programmcodes\\\\\\
+	- Wie haben wir das ganze gemacht? --> Erklären anhand von Ausschnitten unseres Programmcodes\\
 	
 	- Was musste berücksichtigt werden?\\
 	- Was hat uns Schwierigkeiten bereitet?	
