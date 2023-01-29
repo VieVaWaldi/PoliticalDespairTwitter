@@ -96,27 +96,32 @@
 % #####################################################################################
 % Anhang
 % #####################################################################################
-% \begin{appendix}
-% 	\chapter{Trusted AI}
-% 		\label{lab:appendix_a}
-% 		\input{appendix/lgbm_one_dectree}
-% \end{appendix}
+\begin{appendix}
+	\chapter{Code Example Sanitization 1}
+		%\label{lab:appendix_a}
+ 		\input{appendix/testanhang}
+ 	\chapter{Code Example Sanitization 2}
+	 	%\label{lab:appendix_b}
+		\input{appendix/testanhang_2}
+\end{appendix}
 
 % #####################################################################################
 % Literaturverzeichnis
 % #####################################################################################
 
-% Only citations you use are appended to the literature. If you use none of them it will
-% throw an error :) Oh and use make to build the literature bib!
+% Definitionen von LIT und INT im header, ggf aus oder ein kommentieren.
 
-\bibliographylit{literature/literature}
-\bibliographystylelit{alphadin}
-\addcontentsline{notoc}{chapter}{Literature Bibliography}
-\newpage
+% Only citations you use are appended to the literature. If you use none of them it will
+% throw an error :) Oh and use $ make to build the literature bib!
+
+%\bibliographylit{literature/literature}
+%\bibliographystylelit{alphadin}
+%\addcontentsline{notoc}{chapter}{Literature Bibliography}
+%\newpage
 
 \bibliographyint{literature/internet}
 \bibliographystyleint{alphadin}
-\addcontentsline{notoc}{chapter}{Internet Sources}
+\addcontentsline{notoc}{chapter}{Literature}
 \newpage
 
 % #####################################################################################

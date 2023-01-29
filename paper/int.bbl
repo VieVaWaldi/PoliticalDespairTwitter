@@ -7,6 +7,11 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[al.14]{politicalPolarization}
+\textsc{al.}, Michael~D.:
+\newblock \emph{Political Polarization in the American Public}.
+\newblock 2014
+
 \bibitem[boe18]{pattern}
 \textsc{boersennews}:
 \newblock \emph{Patternanalyse}.

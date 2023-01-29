@@ -10,9 +10,11 @@
 \contentsline {section}{\numberline {2.2}Datenverarbeitung}{7}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Sanitization}{8}{subsection.2.2.1}%
 \contentsline {section}{\numberline {2.3}MapReduce (good title missing)}{8}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Analysing data (good title missing)}{12}{chapter.3}%
-\contentsline {section}{\numberline {3.1}data1 (good title missing)}{12}{section.3.1}%
-\contentsline {section}{\numberline {3.2}data2 (good title missing)}{12}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Schluss}{13}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Resume}{13}{section.4.1}%
+\contentsline {chapter}{\numberline {3}Analysing data (good title missing)}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}data1 (good title missing)}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}data2 (good title missing)}{9}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Schluss}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Resume}{10}{section.4.1}%
+\contentsline {chapter}{\numberline {A}Code Example Sanitization 1}{11}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Code Example Sanitization 2}{12}{appendix.B}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
